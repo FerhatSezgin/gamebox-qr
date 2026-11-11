@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GAMEBOX | PlayStation & Cafe Menü</title>
+  <meta name="description" content="Gamebox PlayStation Cafe Menüsü - Soğuk & Sıcak İçecekler, Tostlar ve Atıştırmalıklar.">
+  <meta name="theme-color" content="#07090e">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header: Marka & Wi-Fi -->
+    <header class="header">
+      <div class="top-bar">
+        <div class="live-badge">
+          <span class="dot"></span>
+          <span>Açık</span>
+        </div>
+
+        <button type="button" class="wifi-pill-btn" id="btnWifi">
+          <span>📶</span> <span>Wi-Fi Şifresi</span>
+        </button>
+      </div>
+
+      <!-- Marka Kartı -->
+      <div class="brand-hero">
+        <div class="brand-left">
+          <div class="brand-icon">🎮</div>
+          <div class="brand-title">
+            <h1>GAME<span class="cyan">BOX</span></h1>
+            <p>PlayStation & Cafe Menü</p>
+          </div>
+        </div>
+        <div class="ps-symbols">
+          <span class="sym-tri">▲</span>
+          <span class="sym-cir">●</span>
+          <span class="sym-cro">✖</span>
+          <span class="sym-squ">■</span>
+        </div>
+      </div>
+
+      <!-- Canlı Arama Çubuğu -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Ürün ara... (Örn: Tost, Kola, Redbull, Çay)">
+        <button type="button" id="searchClear" class="search-clear">✕</button>
+      </div>
+    </header>
+
+    <!-- Kategori Barı (Sabit / Sticky) -->
+    <div class="category-nav-wrapper">
+      <div class="category-chips" id="categoryChips">
+        <!-- JS ile dinamik gelecek -->
+      </div>
+    </div>
+
+    <!-- Menü Ürünleri Listesi -->
+    <main id="mainContent">
+      <!-- JS ile dinamik gelecek -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>GAMEBOX PlayStation & Cafe</strong></p>
+      <p style="margin-top: 4px; font-size: 0.8rem; opacity: 0.7;">Keyifli Oyunlar Dileriz 🎮</p>
+    </footer>
+  </div>
+
+  <!-- ===================================================================
+       BÜYÜK ÜRÜN ÖNİZLEME MODALI
+       =================================================================== -->
+  <div class="preview-modal-backdrop" id="previewModal">
+    <div class="preview-card">
+      <button type="button" class="preview-close-btn" data-close-modal>✕</button>
+      
+      <div class="preview-img-container">
+        <img id="previewImg" src="" alt="Ürün Görseli">
+      </div>
+      
+      <h3 class="preview-title" id="previewTitle">Ürün Adı</h3>
+      <p class="preview-desc" id="previewDesc">Ürün Açıklaması</p>
+      
+      <div class="preview-price" id="previewPrice">0 ₺</div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       WIFI BİLGİ MODALI
+       =================================================================== -->
+  <div class="preview-modal-backdrop" id="wifiModal">
+    <div class="preview-card" style="text-align: left;">
+      <button type="button" class="preview-close-btn" data-close-modal>✕</button>
+      
+      <div style="text-align: center; margin-bottom: 14px;">
+        <div style="font-size: 2.5rem; margin-bottom: 6px;">📶</div>
+        <h3 style="color: #fff; font-size: 1.2rem;">GAMEBOX Wi-Fi Ağı</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Ücretsiz kablosuz internet</p>
+      </div>
+
+      <div class="wifi-info-box">
+        <div class="wifi-row">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Ağ Adı (SSID):</span>
+          <strong id="wifiSSID" style="color: #fff;">GAMEBOX_GUEST</strong>
+        </div>
+        <div class="wifi-row">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Şifre:</span>
+          <strong id="wifiPass" style="color: var(--neon-cyan); font-size: 1.1rem; letter-spacing: 1px;">gamebox123</strong>
+        </div>
+      </div>
+
+      <button type="button" class="btn-copy-wifi" id="btnCopyWifi">
+        <span>📋</span>
+        <span>Şifreyi Kopyala</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Bildirimi -->
+  <div class="toast-msg" id="toastMsg"></div>
+
+  <!-- JS -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

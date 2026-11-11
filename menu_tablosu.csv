@@ -1,0 +1,39 @@
+ID,Kategori,Urun_Adi,Fiyat,Aciklama
+f1,Yiyecekler,Karışık Tost,100,Kasap sucuk ve bol erimiş kaşar peyniri
+f2,Yiyecekler,Kaşarlı Tost,100,Taze tost ekmeğinde bol kaşar peyniri
+c1,Soğuk İçecekler,Su,15,Doğal kaynak suyu pet şişe
+c2,Soğuk İçecekler,Coca Cola Şişe,60,Soğuk cam şişe orijinal lezzet
+c3,Soğuk İçecekler,Coca Cola Kutu,90,330ml kutu Coca-Cola
+c4,Soğuk İçecekler,Fanta,90,Kutu portakal aromalı gazoz
+c5,Soğuk İçecekler,Sprite,90,Kutu limon & misket limonu ferahlığı
+c6,Soğuk İçecekler,Sade Soda,25,Beypazarı doğal zengin mineralli maden suyu
+c7,Soğuk İçecekler,Meyveli Soda Çeşitleri,30,Freşa meyve aromalı maden suyu
+c8,Soğuk İçecekler,Cappy Çeşitleri,90,Kutu meyve suyu çeşitleri
+c9,Soğuk İçecekler,Limonata,60,Uludağ ferahlatıcı limonata
+c10,Soğuk İçecekler,Dimes Kutu,50,Kutu meyve nektarı çeşitleri
+c11,Soğuk İçecekler,Lipton Ice Tea Çeşitleri,70,Şeftali / Limon soğuk çay
+c12,Soğuk İçecekler,Redbull,120,250ml enerji içeceği
+c13,Soğuk İçecekler,Nescafe Orjinal,100,Nescafé Xpress soğuk kahve 250ml
+c14,Soğuk İçecekler,Link,30,B vitaminli çilek aromalı içecek
+c15,Soğuk İçecekler,CapriSun,35,Pipetli meyveli ferahlatıcı içecek
+h1,Sıcak İçecekler,Americano,100,Taze çekilmiş sıcak sade kahve
+h2,Sıcak İçecekler,Nescafe Çeşitleri,40,Sıcak kupada sütlü / sade Nescafé
+h3,Sıcak İçecekler,Küçük Çay,20,İnce belli bardakta taze demlenmiş çay
+h4,Sıcak İçecekler,Kupa Çay,30,Büyük cam kupada taze demlenmiş çay
+h5,Sıcak İçecekler,Bitki Çayı,30,Ihlamur adaçayı yeşil çay
+s1,Atıştırmalıklar,İkram,40,Ülker İkram çikolata kremalı bisküvi
+s2,Atıştırmalıklar,Gong,30,Eti Gong bal & hardal mısır patlağı
+s3,Atıştırmalıklar,Kruvasan,30,Bien çikolata dolgulu kruvasan
+s4,Atıştırmalıklar,Karam,50,Eti Karam Gurme bitter çikolata
+s5,Atıştırmalıklar,Tadelle,60,Fındık dolgulu sütlü çikolata
+s6,Atıştırmalıklar,Çokonat,45,Ülker fındıklı çikolatalı gofret
+s7,Atıştırmalıklar,Popkek,30,Eti Popkek bitter çikolata soslu kek
+s8,Atıştırmalıklar,Albeni,35,Bisküvili karamelli çikolata kaplama
+s9,Atıştırmalıklar,Çikolatalı Gofret,45,Ülker çıtır çikolatalı gofret
+s10,Atıştırmalıklar,Metro,35,Ülker karamelli nuga bar çikolata
+s11,Atıştırmalıklar,Ülker Fındıklı Çikolata,60,Bütün fındıklı sütlü çikolata
+s12,Atıştırmalıklar,Browni Intense,40,Eti yoğun çikolatalı browni kek
+s13,Atıştırmalıklar,Rondo,30,Ülker muz kremalı bisküvi
+s14,Atıştırmalıklar,Probis Bisküvi,40,Proteinli muz & kakao kremalı bisküvi
+s15,Atıştırmalıklar,Eti Crax,35,Daha baharatlı gevrek çubuk kraker
+s16,Atıştırmalıklar,Çubuk Kraker,15,Ülker tuzlu çıtır çubuk kraker

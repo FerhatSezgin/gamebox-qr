@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAMEBOX | Menü QR Kod & Stand Kartı Üretici</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .generator-wrap {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .settings-box {
+      background: #0f1422;
+      border: 1px solid rgba(0, 112, 209, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--neon-cyan);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-create {
+      background: linear-gradient(135deg, #0070d1, #00c6ff);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-print-action {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Kartlar */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-tent-card {
+      background: #090c14;
+      border: 2px dashed rgba(0, 112, 209, 0.5);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .theme-light {
+      background: #ffffff !important;
+      color: #111827 !important;
+      border: 2px dashed #9ca3af !important;
+    }
+    .theme-light .card-brand-title { color: #111827 !important; }
+    .theme-light .card-subtext { color: #4b5563 !important; }
+    .theme-light .card-wifi-info { background: #f3f4f6 !important; color: #1f2937 !important; }
+
+    .card-brand-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .card-subtext {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .qr-box {
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-prompt {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      margin: 8px 0;
+    }
+    .theme-light .card-prompt { color: #0284c7 !important; }
+
+    .card-wifi-info {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.75rem;
+      margin-top: 8px;
+    }
+
+    /* Print Stilleri */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      body::before { display: none !important; }
+      .settings-box, .btn-row, .header, .footer { display: none !important; }
+      .generator-wrap { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .cards-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15mm !important;
+      }
+      .menu-tent-card {
+        border: 1px dashed #666 !important;
+        box-shadow: none !important;
+      }
+      @page { size: A4 portrait; margin: 10mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="generator-wrap">
+    <div class="settings-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h1 style="font-size: 1.35rem; font-weight: 800; color: #fff;">
+            🖨️ GAMEBOX Menü QR Kod & Stand Kartı Üretici
+          </h1>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+            Masalara koymak üzere A4 sayfasında yazdırabileceğiniz hazır QR kod kartları.
+          </p>
+        </div>
+        <a href="index.html" class="wifi-pill-btn" style="text-decoration: none;">📱 Menüyü Gör</a>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Menü Web Sitesi URL Adresi:</label>
+          <input type="text" id="siteUrl" class="form-input" value="https://gamebox-menu.vercel.app" placeholder="Örn: https://gamebox-cafe.netlify.app">
+          <small style="color: var(--text-dim); font-size: 0.75rem;">* Sitenizi internete yüklediğinizde size verilen adresi buraya yazın.</small>
+        </div>
+
+        <div class="form-group">
+          <label>Kart Adedi (Baskı Sayısı):</label>
+          <input type="number" id="cardCount" class="form-input" value="6" min="1" max="24">
+        </div>
+
+        <div class="form-group">
+          <label>Wi-Fi Ağ Adı:</label>
+          <input type="text" id="wifiName" class="form-input" value="GAMEBOX_GUEST">
+        </div>
+
+        <div class="form-group">
+          <label>Wi-Fi Şifresi:</label>
+          <input type="text" id="wifiPass" class="form-input" value="gamebox123">
+        </div>
+
+        <div class="form-group">
+          <label>Baskı Rengi:</label>
+          <select id="themeSelect" class="form-input">
+            <option value="light">Mürekkep Tasarruflu (Beyaz Zemin)</option>
+            <option value="dark">Gaming Dark (Siyah Zemin)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-create" id="btnRefresh">
+          <span>🔄</span> <span>Yenile</span>
+        </button>
+        <button type="button" class="btn-print-action" id="btnPrint">
+          <span>🖨️</span> <span>Masa Kartlarını Yazdır (A4)</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+      <!-- Dinamik kartlar buraya eklenecek -->
+    </div>
+  </div>
+
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    (function() {
+      const siteUrl = document.getElementById("siteUrl");
+      const cardCount = document.getElementById("cardCount");
+      const wifiName = document.getElementById("wifiName");
+      const wifiPass = document.getElementById("wifiPass");
+      const themeSelect = document.getElementById("themeSelect");
+      const cardsGrid = document.getElementById("cardsGrid");
+      const btnRefresh = document.getElementById("btnRefresh");
+      const btnPrint = document.getElementById("btnPrint");
+
+      if (window.location.protocol === "file:") {
+        siteUrl.value = window.location.href.replace("qr-generator.html", "index.html");
+      }
+
+      function renderCards() {
+        cardsGrid.innerHTML = "";
+        const url = siteUrl.value.trim() || window.location.href.replace("qr-generator.html", "index.html");
+        const count = parseInt(cardCount.value) || 6;
+        const wName = wifiName.value.trim() || "GAMEBOX_GUEST";
+        const wPass = wifiPass.value.trim() || "gamebox123";
+        const theme = themeSelect.value === "light" ? "theme-light" : "";
+
+        for (let i = 1; i <= count; i++) {
+          const card = document.createElement("div");
+          card.className = `menu-tent-card ${theme}`;
+          const qrId = `qr-code-${i}`;
+
+          card.innerHTML = `
+            <div style="font-size: 0.75rem; letter-spacing: 2px; color: #0070d1; font-weight: 800; margin-bottom: 2px;">▲ ● ✖ ■</div>
+            <div class="card-brand-title">GAMEBOX</div>
+            <div class="card-subtext">PlayStation & Cafe</div>
+
+            <div class="qr-box" id="${qrId}"></div>
+
+            <div class="card-prompt">📱 Kameranla Tara, Menüyü Gör</div>
+
+            <div class="card-wifi-info">
+              📶 Wi-Fi: <strong>${wName}</strong> &nbsp;|&nbsp; 🔑 Şifre: <strong>${wPass}</strong>
+            </div>
+            <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 8px; font-style: italic;">✂ Kesim çizgisi</div>
+          `;
+
+          cardsGrid.appendChild(card);
+
+          new QRCode(document.getElementById(qrId), {
+            text: url,
+            width: 140,
+            height: 140,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+          });
+        }
+      }
+
+      btnRefresh.onclick = renderCards;
+      btnPrint.onclick = () => window.print();
+      themeSelect.onchange = renderCards;
+
+      renderCards();
+    })();
+  </script>
+</body>
+</html>
