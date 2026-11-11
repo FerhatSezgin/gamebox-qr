@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>GAMEBOX Masa QR Kartları</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #ffffff;
+      color: #0f172a;
+      width: 190mm;
+      margin: 0 auto;
+    }
+
+    /* A4 sayfasında 4 adet masa kartı (2 x 2 grid) */
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10mm;
+      height: 270mm;
+    }
+
+    .card {
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .brand-top {
+      margin-top: 4px;
+    }
+
+    .brand-name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #090d16;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0;
+    }
+
+    .instruction {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.2px;
+    }
+
+    .sub-instruction {
+      font-size: 10.5px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .cut-label {
+      font-size: 9px;
+      color: #94a3b8;
+      font-style: italic;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sheet-grid">
+    <!-- Kart 1 -->
+    <div class="card">
+      <div class="brand-top">
+        <div class="brand-name">GAMEBOX</div>
+        <div class="brand-tag">PLAYSTATION & CAFE</div>
+      </div>
+      <div class="qr-container" id="qr1"></div>
+      <div>
+        <div class="instruction">DİJİTAL MENÜ</div>
+        <div class="sub-instruction">Kameranızla tara, menüyü incele</div>
+        <div class="cut-label">✂ Kesim Çizgisi</div>
+      </div>
+    </div>
+
+    <!-- Kart 2 -->
+    <div class="card">
+      <div class="brand-top">
+        <div class="brand-name">GAMEBOX</div>
+        <div class="brand-tag">PLAYSTATION & CAFE</div>
+      </div>
+      <div class="qr-container" id="qr2"></div>
+      <div>
+        <div class="instruction">DİJİTAL MENÜ</div>
+        <div class="sub-instruction">Kameranızla tara, menüyü incele</div>
+        <div class="cut-label">✂ Kesim Çizgisi</div>
+      </div>
+    </div>
+
+    <!-- Kart 3 -->
+    <div class="card">
+      <div class="brand-top">
+        <div class="brand-name">GAMEBOX</div>
+        <div class="brand-tag">PLAYSTATION & CAFE</div>
+      </div>
+      <div class="qr-container" id="qr3"></div>
+      <div>
+        <div class="instruction">DİJİTAL MENÜ</div>
+        <div class="sub-instruction">Kameranızla tara, menüyü incele</div>
+        <div class="cut-label">✂ Kesim Çizgisi</div>
+      </div>
+    </div>
+
+    <!-- Kart 4 -->
+    <div class="card">
+      <div class="brand-top">
+        <div class="brand-name">GAMEBOX</div>
+        <div class="brand-tag">PLAYSTATION & CAFE</div>
+      </div>
+      <div class="qr-container" id="qr4"></div>
+      <div>
+        <div class="instruction">DİJİTAL MENÜ</div>
+        <div class="sub-instruction">Kameranızla tara, menüyü incele</div>
+        <div class="cut-label">✂ Kesim Çizgisi</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/qrcode.min.js"></script>
+  <script>
+    const url = "https://ferhatsezgin.github.io/gamebox-qr/";
+    const qrOptions = {
+      text: url,
+      width: 150,
+      height: 150,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    };
+
+    new QRCode(document.getElementById("qr1"), qrOptions);
+    new QRCode(document.getElementById("qr2"), qrOptions);
+    new QRCode(document.getElementById("qr3"), qrOptions);
+    new QRCode(document.getElementById("qr4"), qrOptions);
+  </script>
+</body>
+</html>
