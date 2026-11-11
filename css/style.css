@@ -1,37 +1,35 @@
 /* ===================================================================
-   GAMEBOX PlayStation Cafe - Premium Dijital QR Menü
+   GAMEBOX PlayStation Cafe - Premium Minimalist Menü
+   Modern, Sade ve Lüks Dark Lounge Tasarımı
    =================================================================== */
 
-:root {
-  --bg-primary: #07090e;
-  --bg-secondary: #0e121d;
-  --bg-card: rgba(16, 21, 34, 0.75);
-  --bg-card-hover: rgba(24, 32, 52, 0.9);
-  
-  /* PlayStation & Neon Vurguları */
-  --ps-blue: #0070d1;
-  --ps-blue-glow: rgba(0, 112, 209, 0.35);
-  --neon-cyan: #00f0ff;
-  --neon-cyan-glow: rgba(0, 240, 255, 0.25);
-  --neon-purple: #8b5cf6;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-  --text-main: #f8fafc;
+:root {
+  --bg: #090b10;
+  --bg-card: #111520;
+  --bg-card-hover: #161b2a;
+  --bg-thumb: #0b0e15;
+  
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.25);
+  --accent-cyan: #38bdf8;
+  
+  --text-main: #f1f5f9;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 240, 255, 0.3);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.16);
   
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-  --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.2s ease;
 }
 
-/* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -40,218 +38,97 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--bg-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
   color: var(--text-main);
   line-height: 1.5;
   min-height: 100vh;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
   overflow-x: hidden;
-  position: relative;
-}
-
-/* Ambient Gaming Glow */
-body::before {
-  content: "";
-  position: fixed;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(0, 112, 209, 0.22) 0%, rgba(139, 92, 246, 0.12) 45%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(50px);
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 680px;
+  max-width: 620px;
   margin: 0 auto;
   padding: 0 16px;
-  position: relative;
-  z-index: 1;
 }
 
 /* ===================================================================
-   HEADER & MARKA ALANI
+   HEADER & MARKA (SADE, CİDDİ & LÜKS)
    =================================================================== */
 
 .header {
-  padding-top: 20px;
+  padding-top: 28px;
   padding-bottom: 12px;
+  text-align: center;
 }
 
-.top-bar {
+.brand-section {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.live-badge {
-  display: inline-flex;
+.brand-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #34d399;
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  gap: 1px;
+}
+
+.brand-title span.accent {
+  color: var(--accent-cyan);
+}
+
+.brand-subtitle {
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
   font-weight: 600;
-  letter-spacing: 0.3px;
+  margin-top: 4px;
 }
 
-.live-badge .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.wifi-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(0, 112, 209, 0.15);
-  border: 1px solid rgba(0, 112, 209, 0.4);
-  color: #60a5fa;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.wifi-pill-btn:hover {
-  background: rgba(0, 112, 209, 0.3);
-  color: #fff;
-  border-color: var(--neon-cyan);
-}
-
-/* Brand Card */
-.brand-hero {
-  background: linear-gradient(135deg, rgba(16, 22, 38, 0.95) 0%, rgba(10, 14, 24, 0.98) 100%);
-  border: 1px solid rgba(0, 112, 209, 0.35);
-  border-radius: var(--radius-lg);
-  padding: 20px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+/* Canlı Arama Çubuğu */
+.search-wrapper {
   position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.brand-hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--ps-blue), transparent);
-}
-
-.brand-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.brand-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, #0070d1, #7928ca);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.7rem;
-  box-shadow: 0 0 20px rgba(0, 112, 209, 0.4);
-  flex-shrink: 0;
-}
-
-.brand-title h1 {
-  font-size: 1.45rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.brand-title h1 span.cyan {
-  background: linear-gradient(90deg, #00f0ff, #38bdf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.brand-title p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.ps-symbols {
-  display: flex;
-  gap: 8px;
-  font-size: 0.95rem;
-  opacity: 0.5;
-  user-select: none;
-}
-.ps-symbols .sym-tri { color: #00f0ff; }
-.ps-symbols .sym-cir { color: #ef4444; }
-.ps-symbols .sym-cro { color: #3b82f6; }
-.ps-symbols .sym-squ { color: #ec4899; }
-
-/* ===================================================================
-   CANLI ARAMA ÇUBUĞU
-   =================================================================== */
-
-.search-box {
-  margin-top: 14px;
-  position: relative;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .search-icon {
   position: absolute;
-  left: 14px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-dim);
-  font-size: 1rem;
   pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
   width: 100%;
-  padding: 13px 14px 13px 44px;
-  background: var(--bg-card);
+  padding: 13px 16px 13px 44px;
+  background: #111522;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  color: var(--text-main);
-  font-size: 0.95rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: inherit;
   transition: var(--transition);
-  backdrop-filter: blur(12px);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
-  background: var(--bg-secondary);
+  border-color: rgba(56, 189, 248, 0.4);
+  background: #141928;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.08);
 }
 
 .search-clear {
@@ -262,27 +139,28 @@ body::before {
   background: none;
   border: none;
   color: var(--text-dim);
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   padding: 4px;
   display: none;
 }
 
 /* ===================================================================
-   KATEGORİ TABS (STICKY)
+   KATEGORİ SEÇİCİ (MODERN PİLLER)
    =================================================================== */
 
 .category-nav-wrapper {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(7, 9, 14, 0.88);
+  background: rgba(9, 11, 16, 0.92);
   backdrop-filter: blur(16px);
-  padding: 10px 0;
+  -webkit-backdrop-filter: blur(16px);
+  padding: 12px 0;
   margin: 10px -16px 14px -16px;
   padding-left: 16px;
   padding-right: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .category-chips {
@@ -292,7 +170,7 @@ body::before {
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 4px 2px;
+  padding: 2px 0;
 }
 
 .category-chips::-webkit-scrollbar {
@@ -301,123 +179,112 @@ body::before {
 
 .category-chip {
   flex-shrink: 0;
-  padding: 9px 18px;
+  padding: 8px 16px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.04);
+  background: #121624;
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.3px;
   cursor: pointer;
   transition: var(--transition);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
 }
 
 .category-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: #181d2e;
+  color: #fff;
+  border-color: var(--border-hover);
 }
 
 .category-chip.active {
-  background: linear-gradient(135deg, #0070d1, #0284c7);
-  color: #fff;
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 16px rgba(0, 112, 209, 0.45);
+  background: #fff;
+  color: #090b10;
+  border-color: #fff;
+  font-weight: 700;
 }
 
 .category-chip .count-badge {
-  background: rgba(0, 0, 0, 0.25);
-  padding: 1px 7px;
-  border-radius: var(--radius-full);
   font-size: 0.72rem;
-  margin-left: 2px;
+  opacity: 0.6;
 }
 
 /* ===================================================================
-   ÜRÜN KARTLARI & LİSTESİ
+   ÜRÜN KARTLARI
    =================================================================== */
 
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 22px 0 12px 0;
+  margin: 24px 0 14px 0;
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-header h2 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
 }
 
 .section-header .item-counter {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
 }
 
 .products-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .product-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 14px;
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
   cursor: pointer;
 }
 
 .product-card:hover {
-  border-color: rgba(0, 112, 209, 0.45);
+  border-color: var(--border-hover);
   background: var(--bg-card-hover);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6);
 }
 
 .product-thumb {
-  width: 76px;
-  height: 76px;
+  width: 60px;
+  height: 60px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-thumb);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4px;
   flex-shrink: 0;
   overflow: hidden;
-  backdrop-filter: blur(5px);
 }
 
 .product-thumb img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .product-card:hover .product-thumb img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .product-info {
@@ -426,63 +293,63 @@ body::before {
 }
 
 .product-name {
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
-  margin-bottom: 2px;
 }
 
 .product-desc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   line-height: 1.35;
+  margin-top: 2px;
 }
 
+/* Sade & Asil Fiyat Rozeti */
 .product-price-tag {
   flex-shrink: 0;
-  text-align: right;
-  padding-left: 6px;
+  padding-left: 8px;
 }
 
 .price-pill {
-  background: rgba(0, 112, 209, 0.16);
-  border: 1px solid rgba(0, 112, 209, 0.45);
+  background: #171d2b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 3px;
   transition: var(--transition);
 }
 
 .product-card:hover .price-pill {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 240, 255, 0.12);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+  border-color: rgba(56, 189, 248, 0.35);
+  background: #1c2335;
 }
 
 .price-pill .price-num {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--neon-cyan);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
 }
 
 .price-pill .price-curr {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #60a5fa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
 }
 
 /* ===================================================================
-   BÜYÜK GÖRSEL ÖNİZLEME MODALI (LIGHTBOX)
+   MODAL / LIGHTBOX
    =================================================================== */
 
 .preview-modal-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 200;
   display: flex;
   align-items: center;
@@ -490,7 +357,7 @@ body::before {
   padding: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .preview-modal-backdrop.open {
@@ -499,17 +366,17 @@ body::before {
 }
 
 .preview-card {
-  background: #0f1422;
-  border: 1px solid rgba(0, 112, 209, 0.5);
+  background: #111522;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 420px;
-  padding: 24px 20px;
+  max-width: 380px;
+  padding: 28px 24px;
   text-align: center;
   position: relative;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 112, 209, 0.3);
-  transform: scale(0.92);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .preview-modal-backdrop.open .preview-card {
@@ -520,22 +387,27 @@ body::before {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border: none;
   color: #fff;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.preview-close-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .preview-img-container {
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
   margin: 10px auto 16px auto;
   display: flex;
   align-items: center;
@@ -563,90 +435,18 @@ body::before {
 }
 
 .preview-price {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--neon-cyan);
-}
-
-/* ===================================================================
-   WIFI MODAL
-   =================================================================== */
-
-.wifi-info-box {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin: 16px 0;
-  text-align: left;
-}
-
-.wifi-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-}
-
-.wifi-row:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.btn-copy-wifi {
-  width: 100%;
-  background: linear-gradient(135deg, #0070d1, #00c6ff);
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: var(--radius-md);
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(0, 112, 209, 0.4);
-}
-
-.btn-copy-wifi:hover {
-  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.5);
-  transform: translateY(-1px);
-}
-
-/* Toast */
-.toast-msg {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100px);
-  background: #1e293b;
-  border: 1px solid var(--neon-cyan);
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 600;
-  z-index: 999;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.3);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-}
-
-.toast-msg.show {
-  transform: translateX(-50%) translateY(0);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
 }
 
 /* Footer */
 .footer {
   margin-top: 50px;
   padding-top: 24px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
 }

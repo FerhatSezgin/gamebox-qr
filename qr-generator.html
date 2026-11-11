@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     .generator-wrap {
-      max-width: 900px;
+      max-width: 860px;
       margin: 30px auto;
       padding: 0 16px;
     }
 
     .settings-box {
-      background: #0f1422;
-      border: 1px solid rgba(0, 112, 209, 0.4);
+      background: #111522;
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 24px;
       margin-bottom: 24px;
@@ -37,17 +37,18 @@
 
     .form-input {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
+      background: #0b0e17;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 10px 12px;
       color: #fff;
       font-size: 0.9rem;
+      font-family: inherit;
     }
 
     .form-input:focus {
       outline: none;
-      border-color: var(--neon-cyan);
+      border-color: rgba(56, 189, 248, 0.4);
     }
 
     .btn-row {
@@ -57,29 +58,31 @@
     }
 
     .btn-create {
-      background: linear-gradient(135deg, #0070d1, #00c6ff);
+      background: #1e2538;
+      border: 1px solid var(--border-hover);
       color: #fff;
-      border: none;
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: var(--radius-md);
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 0.88rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .btn-print-action {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
+      background: #fff;
+      color: #000;
       border: none;
-      padding: 12px 24px;
+      padding: 11px 24px;
       border-radius: var(--radius-md);
       font-weight: 700;
+      font-size: 0.88rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     /* Kartlar */
@@ -90,10 +93,10 @@
     }
 
     .menu-tent-card {
-      background: #090c14;
-      border: 2px dashed rgba(0, 112, 209, 0.5);
+      background: #111522;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
       border-radius: 16px;
-      padding: 24px 20px;
+      padding: 30px 24px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -104,24 +107,26 @@
 
     .theme-light {
       background: #ffffff !important;
-      color: #111827 !important;
-      border: 2px dashed #9ca3af !important;
+      color: #0f172a !important;
+      border: 1px dashed #cbd5e1 !important;
     }
-    .theme-light .card-brand-title { color: #111827 !important; }
-    .theme-light .card-subtext { color: #4b5563 !important; }
-    .theme-light .card-wifi-info { background: #f3f4f6 !important; color: #1f2937 !important; }
+    .theme-light .card-brand-title { color: #0f172a !important; }
+    .theme-light .card-subtext { color: #64748b !important; }
 
     .card-brand-title {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       color: #fff;
     }
 
     .card-subtext {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      font-weight: 600;
     }
 
     .qr-box {
@@ -132,25 +137,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
     .card-prompt {
       font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--neon-cyan);
-      margin: 8px 0;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 14px;
     }
-    .theme-light .card-prompt { color: #0284c7 !important; }
-
-    .card-wifi-info {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 8px;
-      font-size: 0.75rem;
-      margin-top: 8px;
-    }
+    .theme-light .card-prompt { color: #475569 !important; }
 
     /* Print Stilleri */
     @media print {
@@ -158,7 +154,6 @@
         background: #fff !important;
         color: #000 !important;
       }
-      body::before { display: none !important; }
       .settings-box, .btn-row, .header, .footer { display: none !important; }
       .generator-wrap { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
       .cards-grid {
@@ -167,7 +162,7 @@
         gap: 15mm !important;
       }
       .menu-tent-card {
-        border: 1px dashed #666 !important;
+        border: 1px dashed #999 !important;
         box-shadow: none !important;
       }
       @page { size: A4 portrait; margin: 10mm; }
@@ -180,21 +175,20 @@
     <div class="settings-box">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>
-          <h1 style="font-size: 1.35rem; font-weight: 800; color: #fff;">
-            🖨️ GAMEBOX Menü QR Kod & Stand Kartı Üretici
+          <h1 style="font-size: 1.25rem; font-weight: 800; color: #fff;">
+            GAMEBOX Menü QR Kart Üretici
           </h1>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
             Masalara koymak üzere A4 sayfasında yazdırabileceğiniz hazır QR kod kartları.
           </p>
         </div>
-        <a href="index.html" class="wifi-pill-btn" style="text-decoration: none;">📱 Menüyü Gör</a>
+        <a href="index.html" class="btn-create" style="text-decoration: none;">Menüyü Gör</a>
       </div>
 
       <div class="form-row">
         <div class="form-group" style="grid-column: 1 / -1;">
-          <label>Menü Web Sitesi URL Adresi:</label>
-          <input type="text" id="siteUrl" class="form-input" value="https://ferhatsezgin.github.io/gamebox-qr/" placeholder="Örn: https://ferhatsezgin.github.io/gamebox-qr/">
-          <small style="color: var(--text-dim); font-size: 0.75rem;">* Sitenizin canlı adresi otomatik tanımlandı. QR kodlar bu adresi açacaktır.</small>
+          <label>Menü Linki:</label>
+          <input type="text" id="siteUrl" class="form-input" value="https://ferhatsezgin.github.io/gamebox-qr/">
         </div>
 
         <div class="form-group">
@@ -203,31 +197,17 @@
         </div>
 
         <div class="form-group">
-          <label>Wi-Fi Ağ Adı:</label>
-          <input type="text" id="wifiName" class="form-input" value="GAMEBOX_GUEST">
-        </div>
-
-        <div class="form-group">
-          <label>Wi-Fi Şifresi:</label>
-          <input type="text" id="wifiPass" class="form-input" value="gamebox123">
-        </div>
-
-        <div class="form-group">
-          <label>Baskı Rengi:</label>
+          <label>Baskı Teması:</label>
           <select id="themeSelect" class="form-input">
             <option value="light">Mürekkep Tasarruflu (Beyaz Zemin)</option>
-            <option value="dark">Gaming Dark (Siyah Zemin)</option>
+            <option value="dark">Koyu Zemin (Dark)</option>
           </select>
         </div>
       </div>
 
       <div class="btn-row">
-        <button type="button" class="btn-create" id="btnRefresh">
-          <span>🔄</span> <span>Yenile</span>
-        </button>
-        <button type="button" class="btn-print-action" id="btnPrint">
-          <span>🖨️</span> <span>Masa Kartlarını Yazdır (A4)</span>
-        </button>
+        <button type="button" class="btn-create" id="btnRefresh">Yenile</button>
+        <button type="button" class="btn-print-action" id="btnPrint">Masa Kartlarını Yazdır (A4)</button>
       </div>
     </div>
 
@@ -242,23 +222,15 @@
     (function() {
       const siteUrl = document.getElementById("siteUrl");
       const cardCount = document.getElementById("cardCount");
-      const wifiName = document.getElementById("wifiName");
-      const wifiPass = document.getElementById("wifiPass");
       const themeSelect = document.getElementById("themeSelect");
       const cardsGrid = document.getElementById("cardsGrid");
       const btnRefresh = document.getElementById("btnRefresh");
       const btnPrint = document.getElementById("btnPrint");
 
-      if (window.location.protocol === "file:") {
-        siteUrl.value = window.location.href.replace("qr-generator.html", "index.html");
-      }
-
       function renderCards() {
         cardsGrid.innerHTML = "";
-        const url = siteUrl.value.trim() || window.location.href.replace("qr-generator.html", "index.html");
+        const url = siteUrl.value.trim() || "https://ferhatsezgin.github.io/gamebox-qr/";
         const count = parseInt(cardCount.value) || 6;
-        const wName = wifiName.value.trim() || "GAMEBOX_GUEST";
-        const wPass = wifiPass.value.trim() || "gamebox123";
         const theme = themeSelect.value === "light" ? "theme-light" : "";
 
         for (let i = 1; i <= count; i++) {
@@ -267,18 +239,13 @@
           const qrId = `qr-code-${i}`;
 
           card.innerHTML = `
-            <div style="font-size: 0.75rem; letter-spacing: 2px; color: #0070d1; font-weight: 800; margin-bottom: 2px;">▲ ● ✖ ■</div>
             <div class="card-brand-title">GAMEBOX</div>
             <div class="card-subtext">PlayStation & Cafe</div>
 
             <div class="qr-box" id="${qrId}"></div>
 
-            <div class="card-prompt">📱 Kameranla Tara, Menüyü Gör</div>
-
-            <div class="card-wifi-info">
-              📶 Wi-Fi: <strong>${wName}</strong> &nbsp;|&nbsp; 🔑 Şifre: <strong>${wPass}</strong>
-            </div>
-            <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 8px; font-style: italic;">✂ Kesim çizgisi</div>
+            <div class="card-prompt">Kameranla Tara & Menüyü İncele</div>
+            <div style="font-size: 0.65rem; color: #64748b; margin-top: 14px; font-style: italic;">✂ Kesim çizgisi</div>
           `;
 
           cardsGrid.appendChild(card);

@@ -1,5 +1,5 @@
 /**
- * GAMEBOX PlayStation Cafe - Minimal, Ultra Şık Menü & Canlı Google Sheets Senkronizasyonu
+ * GAMEBOX PlayStation Cafe - Sade, Modern & Lüks Menü Mantığı
  */
 
 (function () {
@@ -7,7 +7,6 @@
 
   const config = window.GAMEBOX_CONFIG || {};
   const data = window.GAMEBOX_APP_DATA || {};
-  const cafe = data.cafe || {};
   const categories = data.categories || [];
   const products = data.products || [];
 
@@ -23,27 +22,12 @@
     mainContent: document.getElementById("mainContent"),
     searchInput: document.getElementById("searchInput"),
     searchClear: document.getElementById("searchClear"),
-    btnWifi: document.getElementById("btnWifi"),
-    wifiModal: document.getElementById("wifiModal"),
-    wifiSSID: document.getElementById("wifiSSID"),
-    wifiPass: document.getElementById("wifiPass"),
-    btnCopyWifi: document.getElementById("btnCopyWifi"),
     previewModal: document.getElementById("previewModal"),
     previewImg: document.getElementById("previewImg"),
     previewTitle: document.getElementById("previewTitle"),
     previewDesc: document.getElementById("previewDesc"),
-    previewPrice: document.getElementById("previewPrice"),
-    toastMsg: document.getElementById("toastMsg")
+    previewPrice: document.getElementById("previewPrice")
   };
-
-  function showToast(text, icon = "✅") {
-    if (!elements.toastMsg) return;
-    elements.toastMsg.innerHTML = `<span>${icon}</span> <span>${text}</span>`;
-    elements.toastMsg.classList.add("show");
-    setTimeout(() => {
-      elements.toastMsg.classList.remove("show");
-    }, 2000);
-  }
 
   // ===================================================================
   // KATEGORİ RENDER
@@ -59,7 +43,6 @@
       chip.type = "button";
       chip.className = `category-chip ${state.category === cat.id ? "active" : ""}`;
       chip.innerHTML = `
-        <span>${cat.icon}</span>
         <span>${cat.name}</span>
         <span class="count-badge">${count}</span>
       `;
@@ -99,21 +82,20 @@
     if (filtered.length === 0) {
       elements.mainContent.innerHTML = `
         <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
-          <div style="font-size: 2.8rem; margin-bottom: 12px;">🔍</div>
-          <h3 style="color: #fff;">Sonuç Bulunamadı</h3>
-          <p style="font-size: 0.85rem; margin-top: 6px;">"${query}" ile eşleşen bir ürün bulunamadı.</p>
+          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 600;">Sonuç bulunamadı</h3>
+          <p style="font-size: 0.85rem; margin-top: 4px; color: var(--text-dim);">"${query}" ile eşleşen bir ürün yok.</p>
         </div>
       `;
       return;
     }
 
-    let titleText = "Tüm Menü";
+    let titleText = "Tüm Ürünler";
     if (isSearch) {
       titleText = `"${query}" Arama Sonuçları`;
     } else {
       const currentCat = categories.find(c => c.id === state.category);
       if (currentCat && currentCat.id !== "all") {
-        titleText = `${currentCat.icon} ${currentCat.name}`;
+        titleText = currentCat.name;
       }
     }
 
@@ -181,7 +163,6 @@
     if (!sheetUrl) return;
 
     try {
-      // Önbelleği aşmak için timestamp ekle
       const fetchUrl = sheetUrl.includes("?") ? `${sheetUrl}&_t=${Date.now()}` : `${sheetUrl}?_t=${Date.now()}`;
       const response = await fetch(fetchUrl);
       if (!response.ok) return;
@@ -191,7 +172,6 @@
       if (lines.length <= 1) return;
 
       let updatedCount = 0;
-      // İlk satır başlıklar (ID, Kategori, Urun_Adi, Fiyat, Aciklama)
       for (let i = 1; i < lines.length; i++) {
         const cols = lines[i].split(",").map(c => c.trim().replace(/^"|"$/g, ""));
         if (cols.length < 4) continue;
@@ -203,7 +183,6 @@
 
         if (isNaN(priceNum)) continue;
 
-        // Ürünü id veya isimle eşleştir
         const target = products.find(p => p.id === id || p.name.toLowerCase() === name.toLowerCase());
         if (target) {
           if (target.price !== priceNum) {
@@ -217,41 +196,11 @@
       }
 
       if (updatedCount > 0) {
-        console.log(`[Google Sheets] ${updatedCount} adet fiyat güncellendi.`);
         renderProducts();
       }
     } catch (err) {
-      console.warn("Canlı fiyatlar senkronize edilemedi, yerel fiyatlar aktif.", err);
+      console.warn("Canlı fiyatlar senkronize edilemedi.", err);
     }
-  }
-
-  // ===================================================================
-  // WIFI İŞLEMLERİ
-  // ===================================================================
-  function setupWifi() {
-    if (elements.wifiSSID) elements.wifiSSID.textContent = cafe.wifi.name;
-    if (elements.wifiPass) elements.wifiPass.textContent = cafe.wifi.pass;
-  }
-
-  function copyWifiPass() {
-    const pass = cafe.wifi.pass;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(pass).then(() => {
-        showToast("Wi-Fi şifresi kopyalandı!", "📶");
-      }).catch(() => fallbackCopy(pass));
-    } else {
-      fallbackCopy(pass);
-    }
-  }
-
-  function fallbackCopy(text) {
-    const input = document.createElement("input");
-    input.value = text;
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
-    showToast("Wi-Fi şifresi kopyalandı!", "📶");
   }
 
   // ===================================================================
@@ -260,9 +209,8 @@
   function init() {
     renderCategories();
     renderProducts();
-    setupWifi();
 
-    // Canlı Google Sheets fiyatlarını arka planda çek
+    // Google Sheets senkronizasyonu
     syncLivePricesFromGoogleSheet();
 
     // Arama
@@ -283,18 +231,6 @@
         elements.searchClear.style.display = "none";
         renderProducts();
       };
-    }
-
-    // Wi-Fi Butonları
-    if (elements.btnWifi) {
-      elements.btnWifi.onclick = () => {
-        elements.wifiModal.classList.add("open");
-        document.body.style.overflow = "hidden";
-      };
-    }
-
-    if (elements.btnCopyWifi) {
-      elements.btnCopyWifi.onclick = copyWifiPass;
     }
 
     // Modal Kapatma

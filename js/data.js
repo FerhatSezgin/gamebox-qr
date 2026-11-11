@@ -5,28 +5,21 @@
 
 const GAMEBOX_CONFIG = {
   // Google Sheets canlı fiyat tablosu URL'si (Opsiyonel):
-  // Google E-Tablo oluşturup 'Web'de Yayınla' (CSV) linkini buraya yapıştırabilirsiniz.
-  // Boş bırakılırsa aşağıdaki yerel fiyatlar kullanılır.
   googleSheetCsvUrl: ""
 };
 
 const GAMEBOX_DATA = {
   cafe: {
     name: "GAMEBOX",
-    tagline: "PlayStation & Cafe",
-    instagram: "gameboxcafe",
-    wifi: {
-      name: "GAMEBOX_GUEST",
-      pass: "gamebox123"
-    }
+    tagline: "PlayStation & Cafe"
   },
 
   categories: [
-    { id: "all", name: "Tümü", icon: "✨" },
-    { id: "yiyecekler", name: "Yiyecekler", icon: "🥪" },
-    { id: "soguk-icecek", name: "Soğuk İçecekler", icon: "🥤" },
-    { id: "sicak-icecek", name: "Sıcak İçecekler", icon: "☕" },
-    { id: "atistirmalik", name: "Atıştırmalıklar", icon: "🍿" }
+    { id: "all", name: "Tümü" },
+    { id: "yiyecekler", name: "Yiyecekler" },
+    { id: "soguk-icecek", name: "Soğuk İçecekler" },
+    { id: "sicak-icecek", name: "Sıcak İçecekler" },
+    { id: "atistirmalik", name: "Atıştırmalıklar" }
   ],
 
   products: [
